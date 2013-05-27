@@ -59,16 +59,16 @@ public class MainActivity extends Activity {
 			FileUtils.createDefaultFolder(MainActivity.this);
 			final File file = FileUtils.createFile(FileUtils.IMAGE_FILE);
 			outputFileUri = Uri.fromFile(file);
-
+	
 			// Camera.
 			final Intent captureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 			captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-
+	
 			final Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 			galleryIntent.setType("image/*");
 			// Filesystems
 			// galleryIntent.setAction(Intent.ACTION_GET_CONTENT); // To allow file managers or any other app that are not gallery app.
-
+	
 			final Intent chooserIntent = Intent.createChooser(galleryIntent, "Select Image");
 			// Add the camera options.
 			chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] { captureIntent });
